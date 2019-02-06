@@ -1,0 +1,35 @@
+<div class="m-2">
+<table class="table table-bordered">
+    <thead>
+      <tr class="text-center">
+        <th scope="col" colspan="2">Employee details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">ID</th>
+        <td>{{employee.id}}</td>
+      </tr>
+      <tr>
+        <th scope="row">NAME</th>
+        <td>{{employee.name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Date of Birth</th>
+        <td>{{employee.dob | date}}</td>
+      </tr>
+      <tr>
+          <th scope="row">Salary</th>
+          <td>{{employee.salary}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Skills</th>
+            <td>{{employee.skills}}</td>
+          </tr>
+    </tbody>
+  </table>
+  <div class="mr-2 float-right">
+      <a routerLink="/employee/{{employee.id}}/edit" role="button" class="btn btn-primary"> Edit</a>
+  </div>
+  
+</div>

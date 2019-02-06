@@ -1,0 +1,46 @@
+<div class="m-3" align="right">
+  <a class="btn btn-primary" href="/employee">Go to list</a>
+</div>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{error.message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  
+<form class="mx-2">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" [(ngModel)]="employee.name" value="{{employee.name}}" id="name" placeholder="Name" name="name">
+      </div>
+      <div class="form-group">
+          <label for="dob">Date of birth</label>
+          <input type="date" class="form-control" [(ngModel)]="employee.dob" value="{{employee.dob | date:'yyyy-mm-dd'}}" id="dob" name="dob">
+        </div>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input type="text" class="form-control" [(ngModel)]="employee.salary" value="{{employee.salary}" id="salary" placeholder="0" name="salary">
+    </div>
+    <div class="form-group">
+      <label for="">Skills</label>
+      <div class="form-check" *ngFor="let skill of skills">
+          <input type="checkbox" class="form-check-input"[(ngModel)]="skill.checked" name="Skill{{skill.id}}" >
+          <label class="form-check-label" 
+          >Skill {{skill.id}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="photo">Attach photo:</label>
+        <input type="file"
+               id="photo" [(ngModel)]="employee.photo" name="photo" name="photo"
+               accept="image/png, image/jpeg">
+    </div>
+    <div *ngIf="id; else elseBlock">
+        <button type="submit" class="btn btn-primary"  (click)="putEmployee()">Update</button>
+        &nbsp;
+        <button type="submit" class="btn btn-danger"  (click)="deleteEmployee()">Delete</button>
+    </div>
+    <ng-template #elseBlock>
+        <button type="submit" class="btn btn-primary"  (click)="postEmployee()">Submit</button>
+    </ng-template>
+  </form>
