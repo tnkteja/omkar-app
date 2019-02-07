@@ -1,5 +1,5 @@
 <div class="input-group mb-3 float-right m-2" style="width:180px">
-    <select class="custom-select" [(ngModel)]="perpage" id="inputGroupSelect01">
+    <select class="custom-select" [(ngModel)]="perpage"(change)="getEmployees()" id="inputGroupSelect01">
       <option selected>records per page</option>
       <option value="2">2 records per page</option>
       <option value="3">3 records per page</option>
