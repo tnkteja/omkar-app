@@ -49,6 +49,7 @@ id:any;
       .subscribe(
         res => {
           console.log(res);
+          this.router.navigate(['/employee']);
         },
         err => {
           console.log("Error occured");
