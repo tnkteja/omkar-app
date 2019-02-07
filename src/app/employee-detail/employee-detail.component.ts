@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+import { environment} from '../../environments/environment'
 
 @Component({
   selector: 'app-employee-detail',
@@ -20,7 +21,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   getEmployee(){
-    this.http.get(`http://localhost:3000/employee/${this.id}`)
+    this.http.get(`${environment.baseUrl}/employee/${this.id}`)
       .subscribe(
         res => {
           this.employee=res;

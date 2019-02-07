@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import {environment} from '../../environments/environment'
 
 @Component({
   selector: 'app-employee',
@@ -9,10 +10,7 @@ import { Router } from '@angular/router'
 })
 export class EmployeeComponent implements OnInit {
 
-  employees:any= [{
-    name:"hello",
-    id:"hi"
-  }]
+  employees:any= []
   currentPage:any=1;
   lastPage:any;
   perpage:any=2;
@@ -24,7 +22,7 @@ export class EmployeeComponent implements OnInit {
 
   getEmployees() {
     var queryString=`?current_page=${this.currentPage}&perpage=${this.perpage}`
-    this.http.get('http://localhost:3000/employee'+queryString)
+    this.http.get<any>(environment.baseUrl+'/employee'+queryString)
       .subscribe(
         res => {
           this.employees=res.data;
@@ -47,7 +45,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   delete(id) {
-    this.http.delete('http://localhost:3000/employee/'+id)
+    this.http.delete(environment.baseUrl+'/employee/'+id)
     .subscribe( res => {
       console.log(res,"now")
       window.location.reload()

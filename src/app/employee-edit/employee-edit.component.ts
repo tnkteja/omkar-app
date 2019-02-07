@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router,ActivatedRoute } from '@angular/router'
+import { Router,ActivatedRoute } from '@angular/router';
+import {environment} from '../../environments/environment'
 
 @Component({
   selector: 'app-employee-edit',
@@ -44,7 +45,7 @@ id:any;
     this.employee.skills = skills;
     console.log(this.employee.skills);
     console.log(this.skills)
-    this.http.put('http://localhost:3000/employee/', this.employee)
+    this.http.put(environment.baseUrl+'/employee/', this.employee)
       .subscribe(
         res => {
           console.log(res);
@@ -56,7 +57,7 @@ id:any;
   }
 
   getEmployee(){
-    this.http.get(`http://localhost:3000/employee/${this.id}`)
+    this.http.get(environment.baseUrl+`/employee/${this.id}`)
       .subscribe(
         res => {
           this.employee=res;
@@ -82,7 +83,7 @@ id:any;
       }
     })
     this.employee.skills = skills;
-    this.http.post('http://localhost:3000/employee', this.employee)
+    this.http.post(environment.baseUrl+'/employee', this.employee)
       .subscribe(
         res => {
           console.log(res);
@@ -97,7 +98,7 @@ id:any;
   }
 
   deleteEmployee(){
-    this.http.delete('http://localhost:3000/employee/'+this.id)
+    this.http.delete(environment.baseUrl+'/employee/'+this.id)
 .subscribe( res => {
   console.log(res,"now")
   this.router.navigate(['/employee']);
