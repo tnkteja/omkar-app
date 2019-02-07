@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+// Actually did not use angular seervices. instead defined methods in the components itself. We can move them here.
 export class EmployeeCRUDService {
 
   constructor(private http: HttpClient) { }
