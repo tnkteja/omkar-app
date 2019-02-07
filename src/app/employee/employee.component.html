@@ -31,7 +31,7 @@
       </li>
       <li class="page-item"><a class="page-link">{{currentPage}} of {{lastPage}}</a></li>
       <li [attr.class]="currentPage == lastPage ? 'page-item disabled':'page-item'">
-        <a class="page-link" role="button" (click)="next()">Next</a>
+        <a class="page-link" role="button" tabindex="-1" (click)="next()">Next</a>
       </li>
     </ul>
   </nav>
