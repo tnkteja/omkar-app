@@ -33,7 +33,7 @@
         <label for="photo">Attach photo:</label>
         <input type="file"
                id="photo" [(ngModel)]="employee.photo" name="photo" name="photo"
-               accept="image/png, image/jpeg">
+               accept="image/png, image/jpeg" disabled>
     </div>
     <div *ngIf="id; else elseBlock">
         <button type="submit" class="btn btn-primary"  (click)="putEmployee()">Update</button>
